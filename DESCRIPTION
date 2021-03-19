@@ -1,0 +1,20 @@
+Package: xlsxtracter
+Title: Extract row, column tabular data in a programmatic fashion
+Version: 0.0.1
+Authors@R: 
+    person(given = "Eben",
+           family = "Pendleton",
+           role = c("aut", "cre"),
+           email = "4080051+ebenp@users.noreply.github.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This extracts row and column data from Excel in a programmatic way.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    openxlsx
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
