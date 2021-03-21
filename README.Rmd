@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of xlsxtracter is to provide a programmatic way to extract tabular data from Excel using Lettered cell references (i.e. A4)
+The goal of xlsxtracter is to provide a programmatic way to extract tabular data from Excel using lettered cell references (i.e. A4)
 
 ## Installation
 
@@ -36,9 +36,9 @@ library(xlsxtracter)
 infile <- "tests/testthat/test1.xlsx"
 sheet <- "Sheet1"
 startRow <- 4
-# this is a list of header names, Excel lettered cells, start row, ending row,
-# the start row of data, and the row sequencing (1 captures all rows).
-colrow = list(c("col1", "col2","col3"), c("A", "B","C"), 4, 15, startRow, 1)
+# this is a list of header names, Excel lettered cells, start row
+# ending row and the row sequencing (1 captures all rows).
+colrow = list(c("col1", "col2","col3"), c("A", "B","C"), 4, 15, 1)
 
 # returns a dataframe
 d <- xlsxtractor(infile, colrow)
