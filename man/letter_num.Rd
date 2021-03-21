@@ -2,7 +2,7 @@
 % Please edit documentation in R/xlsxtracter.R
 \name{letter_num}
 \alias{letter_num}
-\title{Convert xlsx to a dataframe
+\title{Convert xlsx references to a dataframe
 This function converts a column letter to number}
 \usage{
 letter_num(ref)
@@ -14,6 +14,6 @@ letter_num(ref)
 number
 }
 \description{
-Convert xlsx to a dataframe
+Convert xlsx references to a dataframe
 This function converts a column letter to number
 }

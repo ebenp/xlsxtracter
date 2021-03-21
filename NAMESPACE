@@ -2,3 +2,4 @@
 
 export(xlsxtractor)
 importFrom(stats,setNames)
+importFrom(utils,tail)

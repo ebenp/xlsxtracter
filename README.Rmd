@@ -1,27 +1,36 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit the README.Rmd file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # xlsxtracter
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of xlsxtracter is to provide a programmatic way to extract
-tabular data from Excel using Lettered cell references (i.e. A4)
+The goal of xlsxtracter is to provide a programmatic way to extract tabular data from Excel using Lettered cell references (i.e. A4)
 
 ## Installation
 
-You can install the development version from
-[GitHub](https://github.com/) with:
+You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("ebenp/xlsxtracter")
 ```
-
 ## Example
 
-``` r
+```{r example}
 library(xlsxtracter)
 # Example with test1.xlsx in the tests folder
 infile <- "tests/testthat/test1.xlsx"
@@ -34,3 +43,4 @@ colrow = list(c("col1", "col2","col3"), c("A", "B","C"), 4, 15, startRow, 1)
 # returns a dataframe
 d <- xlsxtractor(infile, colrow)
 ```
+
