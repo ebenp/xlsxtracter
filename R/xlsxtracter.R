@@ -15,31 +15,34 @@ letter_num <- function(ref) {
 #' This function loads a xlsx file and extracts the passed list to a dataframe
 #'
 #' @param infile Path to the input xlsx file
-#' @param colrow List of header name to use, columns, rows
+#' @param colrow List of columns, rows
+#' @param header Optional header vector. NULL is used to indicate using
+#' the first row as a header
 #' @param sheet Optional sheet name
 #' @return A data frame
 #' @export
 #' @importFrom utils tail
-xlsxtractor <- function(infile, colrow, sheet = "Sheet1"){
+xlsxtractor <- function(infile, colrow, header = NULL, sheet = "Sheet1"){
 
   # read in the file
-  d1 <- openxlsx::read.xlsx(infile, sheet)
-
-  # header
-  # make sure header and columns are the same length
-  stopifnot(length(colrow[[1]]) == length((colrow[[2]])))
-  # make sure the uniqueness is the same
-  stopifnot(length(unique(colrow[[1]])) == length(unique((colrow[[2]]))))
-
-  # grab the header if checks have passed
-  header <- colrow[[1]]
+  d1 <- openxlsx::read.xlsx(infile, sheet, rows = colrow[[2]] )
 
   # determine column numbers
-  col <- sapply(colrow[[2]], letter_num, USE.NAMES = F)
+  col <- sapply(colrow[[1]], letter_num, USE.NAMES = F)
+
+  # header
+  # set irow to 2, assuming header is provided as argument
+  irow <- 2
+  if (is.null(header)) {
+    header <- colnames(d1)
+  }
+
+  # make sure header and columns are the same length
+  stopifnot(length(header) == length((colrow[[1]])))
 
   # create dataframe and set header names
   # subtract off header row and indexing
-  d1 <- data.frame(d1[colrow[[3]] - 2,col])
+  d1 <- data.frame(d1[,col])
   names(d1) <- header
   # reset row names
   row.names(d1) <- NULL

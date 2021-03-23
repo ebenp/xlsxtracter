@@ -19,17 +19,34 @@ You can install the development version from
 devtools::install_github("ebenp/xlsxtracter")
 ```
 
-## Example
+## Examples
 
 ``` r
 library(xlsxtracter)
+# This includes a user supplied header
 # Example with test1.xlsx in the tests folder
 infile <- "tests/testthat/test1.xlsx"
 sheet <- "Sheet1"
+header <- c("col1", "col2","col3")
 rows <- seq(4, 15)
 # this is a list of header names, Excel lettered cells, rows
-colrow = list(c("col1", "col2","col3"), c("A", "B","C"), rows)
+colrow = list(c("A", "B","C"), rows)
 
 # returns a dataframe
-d <- xlsxtractor(infile, colrow)
+d <- xlsxtractor(infile, colrow, header = header)
+```
+
+``` r
+library(xlsxtracter)
+# This reads the header in
+# Example with test1.xlsx in the tests folder
+infile <- "tests/testthat/test1.xlsx"
+sheet <- "Sheet1"
+header <- NULL
+rows <- seq(3, 15)
+# this is a list of header names, Excel lettered cells, rows
+colrow = list(c("A", "B","C"), rows)
+
+# returns a dataframe
+d <- xlsxtractor(infile, colrow, header = header)
 ```

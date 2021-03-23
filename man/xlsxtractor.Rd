@@ -4,12 +4,15 @@
 \alias{xlsxtractor}
 \title{This function loads a xlsx file and extracts the passed list to a dataframe}
 \usage{
-xlsxtractor(infile, colrow, sheet = "Sheet1")
+xlsxtractor(infile, colrow, header = NULL, sheet = "Sheet1")
 }
 \arguments{
 \item{infile}{Path to the input xlsx file}
 
-\item{colrow}{List of header name to use, columns, rows}
+\item{colrow}{List of columns, rows}
+
+\item{header}{Optional header vector. NULL is used to indicate using
+the first row as a header}
 
 \item{sheet}{Optional sheet name}
 }
