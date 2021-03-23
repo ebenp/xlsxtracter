@@ -9,8 +9,7 @@ xlsxtractor(infile, colrow, sheet = "Sheet1")
 \arguments{
 \item{infile}{Path to the input xlsx file}
 
-\item{colrow}{List of header name to use, columns, rows, startrow,
-row interval}
+\item{colrow}{List of header name to use, columns, rows}
 
 \item{sheet}{Optional sheet name}
 }
