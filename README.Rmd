@@ -36,8 +36,7 @@ library(xlsxtracter)
 infile <- "tests/testthat/test1.xlsx"
 sheet <- "Sheet1"
 rows <- seq(4, 15)
-# this is a list of header names, Excel lettered cells, start row
-# ending row and the row sequencing (1 captures all rows).
+# this is a list of header names, Excel lettered cells, rows
 colrow = list(c("col1", "col2","col3"), c("A", "B","C"), rows)
 
 # returns a dataframe
