@@ -4,7 +4,13 @@
 \alias{xlsxtractor}
 \title{This function loads a xlsx file and extracts the passed list to a dataframe}
 \usage{
-xlsxtractor(infile, colrow, header = NULL, sheet = "Sheet1")
+xlsxtractor(
+  infile,
+  colrow,
+  header = NULL,
+  sheet = "Sheet1",
+  one_to_many = list(c(NULL))
+)
 }
 \arguments{
 \item{infile}{Path to the input xlsx file}
@@ -15,6 +21,9 @@ xlsxtractor(infile, colrow, header = NULL, sheet = "Sheet1")
 the first row as a header}
 
 \item{sheet}{Optional sheet name}
+
+\item{one_to_many}{replicates the reference to the data frame length
+Syntax is list(c(colname), c(column letter), c(row letter))}
 }
 \value{
 A data frame

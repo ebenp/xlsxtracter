@@ -19,10 +19,13 @@ letter_num <- function(ref) {
 #' @param header Optional header vector. NULL is used to indicate using
 #' the first row as a header
 #' @param sheet Optional sheet name
+#' @param one_to_many replicates the reference to the data frame length
+#' Syntax is list(c(colname), c(column letter), c(row letter))
 #' @return A data frame
 #' @export
 #' @importFrom utils tail
-xlsxtractor <- function(infile, colrow, header = NULL, sheet = "Sheet1"){
+xlsxtractor <- function(infile, colrow, header = NULL, sheet = "Sheet1",
+                        one_to_many = list(c(NULL))){
 
   # read in the file
   d1 <- openxlsx::read.xlsx(infile, sheet, rows = colrow[[2]] )
@@ -31,8 +34,6 @@ xlsxtractor <- function(infile, colrow, header = NULL, sheet = "Sheet1"){
   col <- sapply(colrow[[1]], letter_num, USE.NAMES = F)
 
   # header
-  # set irow to 2, assuming header is provided as argument
-  irow <- 2
   if (is.null(header)) {
     header <- colnames(d1)
   }
@@ -47,6 +48,16 @@ xlsxtractor <- function(infile, colrow, header = NULL, sheet = "Sheet1"){
   # reset row names
   row.names(d1) <- NULL
 
+  # if one to many is given read in the data at the given column, row
+  if(!is.null(one_to_many[[1]])) {
+    # read in the file
+    d2 <- openxlsx::read.xlsx(infile, sheet, rows = one_to_many[[3]] )
+
+    # determine column numbers
+    col <- sapply(one_to_many[[2]], letter_num, USE.NAMES = F)
+    d1[[one_to_many[[1]]]] <- colnames(d2)[[1]]
+
+    }
   # return sliced dataframe
   return(d1)
 }
